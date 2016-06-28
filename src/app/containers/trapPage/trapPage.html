@@ -1,0 +1,11 @@
+<h1>Trap container</h1>
+
+
+
+<button (click)="newTrap()">New Trap</button>
+
+<div *ngFor="let trap of traps | async">
+  <label>Trap: {{trap.id}}</label>
+  <input [(ngModel)]="trap.name" (ngModelChange)="onTrapChange(trap)" />
+  <button (click)="deleteTrap(trap.id)">Delete</button>
+</div>
