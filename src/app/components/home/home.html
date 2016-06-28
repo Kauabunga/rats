@@ -1,2 +1,17 @@
 <h3>Home Component</h3>
 <p>Welcome to Angular Seed</p>
+
+
+<button (click)="newTrap()">New Trap</button>
+
+<div *ngFor="let trap of traps | async">Trap: {{trap | json}} {{trap.name || 'no name'}}</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<button (click)="increment()">Increment</button>
+<div>Current Count: {{ counter | async }}</div>
+<button (click)="decrement()">Decrement</button>

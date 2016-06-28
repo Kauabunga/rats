@@ -1,23 +1,26 @@
 import { Component } from '@angular/core';
-import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import {Trap} from "./trap.interface";
+import {TrapService} from "./trap.service";
 
-import { Home } from './components/home/home';
-import { About } from './components/about/about';
-import { RepoBrowser } from './components/repo-browser/repo-browser';
+
+export interface AppState {
+  traps: Trap[]
+}
 
 @Component({
   selector: 'app',
   pipes: [],
-  providers: [],
+  providers: [ TrapService ],
   directives: [ ROUTER_DIRECTIVES ],
   templateUrl: './app.html',
 })
-@Routes([
-  { path: '/',       component: Home,       },
-  { path: '/about',  component: About,      },
-  { path: '/github', component: RepoBrowser },
-])
 export class App {
-  constructor() {}
+
+  constructor(private trapService: TrapService) { }
+
+  ngOnInit() {
+    this.trapService.init();
+  }
 
 }

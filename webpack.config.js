@@ -51,6 +51,9 @@ var defaultConfig = {
         loader: 'source-map-loader',
         exclude: [
           // these packages have problems with their sourcemaps
+          path.join(__dirname, 'node_modules', 'firebase'),
+          path.join(__dirname, 'node_modules', 'angular2-uuid'),
+          path.join(__dirname, 'node_modules', '@ngrx'),
           path.join(__dirname, 'node_modules', 'rxjs'),
           path.join(__dirname, 'node_modules', '@angular2-material'),
           path.join(__dirname, 'node_modules', '@angular'),
@@ -67,6 +70,7 @@ var defaultConfig = {
     root: [ path.join(__dirname, 'src') ],
     extensions: ['', '.ts', '.js', '.json'],
     alias: {
+      'firebase/app': path.join(__dirname, 'node_modules', 'firebase', 'firebase-app.js'),
       'angular2/testing': path.join(__dirname, 'node_modules', '@angular', 'core', 'testing.js'),
       '@angular/testing': path.join(__dirname, 'node_modules', '@angular', 'core', 'testing.js'),
       'angular2/core': path.join(__dirname, 'node_modules', '@angular', 'core', 'index.js'),
@@ -80,7 +84,7 @@ var defaultConfig = {
 
   devServer: {
     historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 }
+    watchOptions: { aggregateTimeout: 1000, poll: 1000 }
   },
 
   node: {
