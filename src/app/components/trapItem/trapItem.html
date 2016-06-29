@@ -1,0 +1,7 @@
+
+
+
+<label>Trap: {{trap.id}}</label>
+<input [(ngModel)]="trap.name" (ngModelChange)="changed.emit(trap)" />
+<button (click)="deleted.emit(trap.id)">Delete</button>
+

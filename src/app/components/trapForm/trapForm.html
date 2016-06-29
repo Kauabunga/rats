@@ -1,0 +1,7 @@
+
+
+<button (click)="created.emit($event)">New Trap</button>
+
+<div *ngFor="let trap of traps | async">
+    <trap-item [trap]="trap" (changed)="changed.emit($event)" (deleted)="deleted.emit($event)"></trap-item>
+</div>

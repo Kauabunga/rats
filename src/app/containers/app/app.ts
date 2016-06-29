@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import {Trap} from "./trap.interface";
-import {TrapService} from "./trap.service";
+import {Trap} from "../../trap.interface";
+import {TrapService} from "../../trap.service";
 
 
 export interface AppState {
@@ -14,6 +14,8 @@ export interface AppState {
   providers: [ TrapService ],
   directives: [ ROUTER_DIRECTIVES ],
   templateUrl: './app.html',
+  styleUrls: ['./app.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class App {
 

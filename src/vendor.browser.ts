@@ -8,9 +8,9 @@ import '@angular/http';
 import '@angular/router';
 
 //ngstore
-// import '@ngrx/core';
-// import '@ngrx/store';
-
+import '@ngrx/core';
+import '@ngrx/store';
+import '@ngrx/effects';
 
 // RxJS 5
 // import 'rxjs/Rx';

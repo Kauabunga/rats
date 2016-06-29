@@ -29,7 +29,7 @@ export class TrapEffects {
   @Effect() update$ = this.updates$
     .whenAction(UPDATE_TRAP)
     .map(state => state.action.payload)
-    .buffer(this.updates$.whenAction(UPDATE_TRAP).debounceTime(4000))
+    .buffer(this.updates$.whenAction(UPDATE_TRAP).debounceTime(2000))
     .switchMap(traps => Observable.from(traps.reverse()))
     .distinctUntilKeyChanged('id')
     .mergeMap(trap => this.http.put(`https://reactrats.firebaseio.com/traps/${trap.id}.json`, JSON.stringify(_.omit(trap, 'id')))
