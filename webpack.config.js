@@ -26,8 +26,8 @@ var webpackConfig = {
       { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
       { test: /\.html$/, loader: 'raw-loader' },
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.less$/, exclude: /node_modules/, loader: 'raw-loader!less-loader' }
-
+      { test: /\.less$/, exclude: /node_modules/, loader: 'raw-loader!less-loader' },
+      { test: /\.jade$/, loader: 'raw-loader!pug-loader' }
     ]
   }
 

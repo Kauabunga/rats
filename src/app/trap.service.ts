@@ -5,13 +5,14 @@ import { UUID } from 'angular2-uuid';
 import {Trap} from "./trap.interface";
 import { Store } from '@ngrx/store';
 import {
-    NEW_TRAP, INIT_TRAP, DELETE_TRAP, ADD_TRAP, UPDATE_TRAP, DELETE_TRAP_FIREBASE,
+    NEW_TRAP, DELETE_TRAP, UPDATE_TRAP, DELETE_TRAP_FIREBASE,
     NEW_TRAP_FIREBASE, UPDATE_TRAP_FIREBASE
 } from "./trap.reducer";
-import {AppState} from "./app";
+
 
 import * as _ from 'lodash';
 import * as firebase from 'firebase';
+import {AppState} from "./containers/app/app";
 
 
 @Injectable()
@@ -57,8 +58,9 @@ export class TrapService {
     this.store.dispatch({ type: UPDATE_TRAP, payload: trap });
   }
 
-  createNewTrap(){
-    this.store.dispatch({type: NEW_TRAP, payload: this.getNewTrap()});
+  createTrap(trap: Trap){
+    trap = trap || this.getNewTrap();
+    this.store.dispatch({type: NEW_TRAP, payload: trap});
   }
 
   deleteTrap(id){

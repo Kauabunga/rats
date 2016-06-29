@@ -1,9 +1,18 @@
-<h1>Map container</h1>
 
 
-<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="mapClick($event)" (mapDblClick)="mapDblClick($event)" (centerChange)="centerChange($event)"
+                 [disableDoubleClickZoom]="disableDoubleClickZoom"  [disableDefaultUI]="disableDefaultUI" [streetViewControl]="streetViewControl">
 
+    <sebm-google-map-marker *ngFor="let trap of traps | async"
+                            [latitude]="getTrapLat(trap)" [longitude]="getTrapLng(trap)"
+                            (markerClick)="markerClick(trap)" [title]="trap.name">
 
-    <!--TODO GET FROM TRAPSS-->
-    <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+        <sebm-google-map-info-window (infoWindowClose)="infoWindowClose(trap)"
+                                     [isOpen]="trap.meta.isOpen" [disableAutoPan]="true">
+            <label>Name</label>
+            <input [(ngModel)]="trap.name" (ngModelChange)="onTrapUpdate(trap)"/>
+        </sebm-google-map-info-window>
+
+    </sebm-google-map-marker>
+
 </sebm-google-map>

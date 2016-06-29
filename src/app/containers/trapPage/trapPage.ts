@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {TrapService} from "../../trap.service";
 import {TrapForm} from "../../components/trapForm/trapForm";
 import {AppState} from "../app/app";
+import {Trap} from "../../trap.interface";
 
 
 @Component({
@@ -18,19 +19,24 @@ import {AppState} from "../app/app";
 export class TrapPage {
 
   traps: Observable<any>;
+  subscription;
 
-  constructor(public store: Store<AppState>, private trapService: TrapService) {
-    this.traps = store.select('traps');
+  constructor(private store: Store<AppState>, private trapService: TrapService) { }
+
+  ngOnInit() {
+    this.traps = this.store.select('traps');
   }
 
-  ngOnInit() {}
+  ngOnDestroy() {
+
+  }
 
   onTrapChange(trap){
     this.trapService.updateTrap(trap);
   }
 
   newTrap(){
-    this.trapService.createNewTrap();
+    this.trapService.createTrap(<Trap>undefined);
   }
 
   deleteTrap(id){

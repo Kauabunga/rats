@@ -10,7 +10,7 @@ import {TrapItem} from "../trapItem/trapItem";
   directives: [TrapItem],
   styleUrls: ['./trapForm.less'],
   templateUrl: './trapForm.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrapForm implements AfterViewChecked {
 

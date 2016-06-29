@@ -1,7 +1,21 @@
 
 
 
-<label>Trap: {{trap.id}}</label>
-<input [(ngModel)]="trap.name" (ngModelChange)="changed.emit(trap)" />
-<button (click)="deleted.emit(trap.id)">Delete</button>
+<div class="trap-item-row">
+    <label>{{trap.id}}</label>
+    <button (click)="deleted.emit(trap.id)">Delete</button>
+</div>
+
+<div class="trap-item-row">
+    <label>Name</label>
+    <input [(ngModel)]="trap.name" (ngModelChange)="changed.emit(trap)" />
+</div>
+
+<div class="trap-item-row">
+    <label>Lat</label>
+    <input [(ngModel)]="trap.position.lat" (ngModelChange)="changed.emit(trap)" />
+    <label>Lng</label>
+    <input [(ngModel)]="trap.position.lng" (ngModelChange)="changed.emit(trap)" />
+</div>
+
 
